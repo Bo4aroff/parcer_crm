@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # ==========================
 
 st.set_page_config(page_title="Анализ обращений", layout="wide")
-st.title("📋 Анализ обращений клиентов (BlackQuant Diagnostics v1.2)")
+st.title("📋 Анализ обращений клиентов (Diagnostics v1.2)")
 
 st.markdown(
     "Загрузите Excel-файл с обращениями. "
@@ -18,11 +18,11 @@ st.markdown(
 )
 
 plt.rcParams.update({
-    "axes.titlesize": 11,
-    "axes.labelsize": 10,
-    "xtick.labelsize": 9,
-    "ytick.labelsize": 9,
-    "legend.fontsize": 9,
+    "axes.titlesize": 7,
+    "axes.labelsize": 7,
+    "xtick.labelsize": 7,
+    "ytick.labelsize": 7,
+    "legend.fontsize": 7,
 })
 
 keywords_admin = [
@@ -111,7 +111,7 @@ if uploaded_file:
             trend_df.fillna(0, inplace=True)
 
             # График 1 — абсолютные значения
-            fig, ax = plt.subplots(figsize=(6, 3))
+            fig, ax = plt.subplots(figsize=(8, 3))
             ax.plot(trend_df["Месяц"], trend_df["Количество_регистратура"], marker="o", color="#E67E22", label="Регистратура / Администратор")
             ax.plot(trend_df["Месяц"], trend_df["Ожидание"], marker="o", color="#3498DB", label="Ожидание / Очередь")
             ax.set_title("Количество обращений по месяцам")
@@ -126,7 +126,7 @@ if uploaded_file:
             trend_df["%_регистратура"] = (trend_df["Количество_регистратура"] / trend_df["Количество_всего"] * 100).round(1)
             trend_df["%_ожидание"] = (trend_df["Ожидание"] / trend_df["Количество_всего"] * 100).round(1)
 
-            fig2, ax2 = plt.subplots(figsize=(6, 3))
+            fig2, ax2 = plt.subplots(figsize=(8, 3))
             ax2.plot(trend_df["Месяц"], trend_df["%_регистратура"], marker="o", color="#E67E22", label="% Регистратура / Админ")
             ax2.plot(trend_df["Месяц"], trend_df["%_ожидание"], marker="o", color="#3498DB", label="% Ожидание / Очередь")
             ax2.set_title("Доля проблемных обращений по месяцам (%)")
